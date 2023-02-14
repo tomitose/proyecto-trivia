@@ -1,18 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Ruleta from "./components/Ruleta/Ruleta";
+import Memo from "./components/Memo/Memo";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code></code> 
-          Pene de mono
-        </p>
-
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/memo" element={<Memo />}></Route>
+        <Route path="/ruleta" element={<Ruleta />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
