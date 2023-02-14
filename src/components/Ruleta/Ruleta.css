@@ -1,0 +1,106 @@
+li:first-child .text {
+    background-color: violet;
+}
+
+li:nth-child(2) .text {
+    background-color: indigo;
+}
+
+li:nth-child(3) .text {
+    background-color: blue;
+}
+
+li:nth-child(4) .text {
+    background-color: green;
+}
+
+li:nth-child(5) .text {
+    background-color: yellow;
+}
+
+li:nth-child(6) .text {
+    background-color: orange;
+}
+
+li:nth-child(7) .text {
+    background-color: red;
+}
+
+li:nth-child(8) .text {
+    background-color: violet;
+}
+
+li:nth-child(9) .text {
+    background-color: indigo;
+}
+
+li:nth-child(10) .text {
+    background-color: blue;
+}
+
+li:nth-child(11) .text {
+    background-color: green;
+}
+
+li:nth-child(12) .text {
+    background-color: yellow;
+}
+
+li:first-child {
+    transform: rotate(0deg) skewY(-60deg);
+}
+
+li:nth-child(2) .text {
+    transform: rotate(30deg) skewY(-60deg);
+}
+
+li:nth-child(3) .text {
+    transform: rotate(60deg) skewY(-60deg);
+}
+
+li:nth-child(4) .text {
+    transform: rotate(90deg) skewY(-60deg);
+}
+
+li:nth-child(5) .text {
+    transform: rotate(120deg) skewY(-60deg);
+}
+
+li:nth-child(6) .text {
+    transform: rotate(150deg) skewY(-60deg);
+}
+
+li:nth-child(7) .text {
+    transform: rotate(30deg) skewY(-60deg);
+}
+
+li:nth-child(8) .text {
+    transform: rotate(30deg) skewY(-60deg);
+}
+
+li:nth-child(9) .text {
+    transform: rotate(240deg) skewY(-60deg);
+}
+
+li:nth-child(10) .text {
+    transform: rotate(270deg) skewY(-60deg);
+}
+
+li:nth-child(11) .text {
+    transform: rotate(300deg) skewY(-60deg);
+}
+
+li:nth-child(12) .text {
+    transform: rotate(330deg) skewY(-60deg);
+}
+.circle {
+    width: 25em;
+    height: 25em;
+    border: 1px solid black;
+    position: relative;
+    padding: 0;
+    margin: 1em auto;
+    border-radius: 50%;
+    list-style: none;
+    overflow: hidden;
+}
