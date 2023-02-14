@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import "./Memo.css";
+import MemoCards from './MemoCards/MemoCards';
 
 const Memo = () => {
   return (
-    <div>Memo</div>
+    <div className='container'>
+        <h1>Memo:</h1>
+        <MemoCards/>
+    </div> 
   )
 }
 
