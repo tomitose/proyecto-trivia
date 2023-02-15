@@ -1,33 +1,33 @@
 li:first-child .text {
-    background-color: violet;
+    background-color: #643618e6;
     /* background-color: black; */
 }
 li:nth-child(2) .text {
-    background-color: indigo;
+    background-color: #643618;
     /* background-color: black; */
 }
 li:nth-child(3) .text {
-    background-color: blue;
+    background-color:#643618e6;
     /* background-color: black; */
 }
 li:nth-child(4) .text {
-    background-color: green;
+    background-color: #643618;
     /* background-color: black; */
 }
 li:nth-child(5) .text {
-    background-color: yellow;
+    background-color: #643618e6;
     /* background-color: black; */
 }
 li:nth-child(6) .text {
-    background-color: orange;
+    background-color: #643618;
     /* background-color: black; */
 }
 li:nth-child(7) .text {
-    background-color: red;
+    background-color: #643618e6;
     /* background-color: black; */
 }
 li:nth-child(8) .text {
-    background-color: brown;
+    background-color: #643618;
     /* background-color: black; */
 }
 
@@ -104,10 +104,13 @@ li {
 }
 .spin-button{
     position: absolute;
-    left: 40%;
-    width: 120px;
+    left: 48.5%;
+    top: 18%;
+    z-index: 1;
+    width: 45px;
     height: 40px;
-    background-color:blue;
+    background-color:black;
+    border: 3px solid #af7650;
     border-radius: 30px;
     margin-top: 20px;
     cursor:pointer;
@@ -119,6 +122,10 @@ li {
     animation: start-rotate 1s linear infinite;
 }
 
+.restart-rotate{
+    animation: start-rotate is none;
+}
+
 @keyframes start-rotate {
     100% {
         transform: rotate(360deg)
@@ -127,4 +134,12 @@ li {
 
 .stop-rotate{
     animation-play-state: paused;
+}
+
+.img-container{
+    position: absolute;
+    top:10px;
+    left:174px;
+    width: 20%;
+    height: 20%;
 }
