@@ -1,3 +1,5 @@
+.container
+
 li:first-child .text {
     background-color: #643618e6;
     /* background-color: black; */
@@ -61,12 +63,14 @@ li:nth-child(8) {
     width: 25em;
     height: 25em;
     border: 1px solid black;
-    position: relative;
+    position: absolute;
     padding: 0;
     margin: 1em auto;
     border-radius: 50%;
     list-style: none;
     overflow: hidden;
+    left: calc(50% - 220px);
+    top: 60px;
 }
 li {
     overflow: hidden;
@@ -128,7 +132,7 @@ li {
 
 @keyframes start-rotate {
     100% {
-        transform: rotate(360deg)
+        transform: rotate(720deg)
     }
 }
 
@@ -142,4 +146,9 @@ li {
     left:174px;
     width: 20%;
     height: 20%;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
 }
