@@ -3,10 +3,24 @@ import "./Ruleta.css"
 const Ruleta = () => {
 
     const [frase, setFrase] = useState({name : "circle"});
+    const data = [
+        {id:0, tematica: "Juicio Juntas", image:"-1"},
+        {id:1, tematica: "Leyes Obedencia debida y punto", image:"-2"},
+        {id:2, tematica: "Vuelta a la Democracia", image:"-3"},
+        {id:3, tematica: "Nestor baja los cuadros", image:"-4"},
+        {id:4, tematica: "Abuelas recuperando nietos", image:"-5"},
+        {id:5, tematica: "Reclamo diplomatico y pacifico por las islas Malvinas", image:"-6"},
+        {id:6, tematica: "Primera marcha de las madres de plaza de mayo", image:"-7"},
+        {id:7, tematica: "Recuperacion de centros de memoria", image:"-8"}
+    ]
 
-    
+
 
     const startRotation = () => {
+        
+        
+        let num = Math.floor(Math.random() * 8);
+        console.log(data[num])
         setFrase({
             name:"circle start-rotate"
         })
@@ -14,7 +28,7 @@ const Ruleta = () => {
             setFrase({
                 name:"circle start-rotate stop-rotate"
             }) 
-        },Math.floor(Math.random() * 10000) + 1)
+        },1050)
     };
 
     return (
@@ -69,30 +83,6 @@ const Ruleta = () => {
                         spellCheck="false"
                         suppressContentEditableWarning={true}>8</div>
                 </li>
-                {/* <li>
-                    <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>9</div>
-                </li>
-                <li>
-                    <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>10</div>
-                </li>
-                <li>
-                    <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>11</div>
-                </li>
-                <li>
-                    <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true} >12</div>
-                </li> */}
             </ul>
             <button className='spin-button' onClick={() => startRotation()}>SPIN</button>
         </div>
