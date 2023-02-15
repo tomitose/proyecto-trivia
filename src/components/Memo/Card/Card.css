@@ -7,6 +7,8 @@
     transform: rotateY(180deg);
     animation: 3s hideCard linear;
     transition: transform 0.5s;
+    cursor: pointer
+    
 }
 
 @keyframes hideCard{

@@ -1,11 +1,14 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ item, id, handleClick }) => {
-  const itemClass = item.stat ? "active " + item.stat : "";
+const Card = ({ item, handleChoice }) => {
+
+  const handleClick = () => {
+    handleChoice(item)
+  }
 
   return (
-    <div className={"card" + itemClass} onClick={() => handleClick(id)}>
+    <div className="card" onClick={handleClick}>
       <img className="img-card" src={item.img} alt="img" />
     </div>
   );
