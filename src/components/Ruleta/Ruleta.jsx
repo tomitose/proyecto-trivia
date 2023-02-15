@@ -17,7 +17,7 @@ const Ruleta = () => {
     const data = [
         { id: 1, tematica: "Juicio Juntas", image: "/img/ruletaImagenes/tematica1.jpg", opt1: "Juicio Juntas", opt2: "Diputados de la Nacion recibiendo distinción", opt3: "Juicio por las Malvinas" },
         { id: 2, tematica: "Leyes Obedencia debida y punto", image: "/img/ruletaImagenes/tematica2.jpg", opt1: "Leyes Obedencia debida y punto", opt2: "Menem asume la presidencia", opt3: "Oficiales Armadas presentandose ante la nación" },
-        { id: 3, tematica: "Vuelta a la Democracia", image: "/img/ruletaImagenes/tematica3.jpg", opt1: "Vuelta a la democracia", opt2: "Creacion de la nueva bandera Argentina", opt3: "Presidente de Estados Unidos visita la casa Rosada" },
+        { id: 3, tematica: "Vuelta a la democracia", image: "/img/ruletaImagenes/tematica3.jpg", opt1: "Vuelta a la democracia", opt2: "Creacion de la nueva bandera Argentina", opt3: "Presidente de Estados Unidos visita la casa Rosada" },
         { id: 4, tematica: "Nestor Kirchner baja los cuadros de la dictadura", image: "/img/ruletaImagenes/tematica4.jpg", opt1: "Nestor Kirchner baja los cuadros de la dictadura", opt2: "Nestor Kirchner cuelga cuadros de los presidentes Argentinos faltantes", opt3: "Nestor Kirchner baja los cuadros para reenmarcarlos" },
         { id: 5, tematica: "Abuela recuperando un nieto desaparecido en la dictadura", image: "/img/ruletaImagenes/tematica5.jpg", opt1: "Abuela recuperando un nieto desaparecido en la dictadura", opt2: "Dos personas festejando la vuelta a la democracia", opt3: "Madre y hijo con una foto por el dia de la madre" },
         { id: 6, tematica: "Reclamo diplomatico y pacifico por las islas Malvinas", image: "/img/ruletaImagenes/tematica6.jpg", opt1: "Reclamo diplomatico y pacifico por las islas Malvinas", opt2: "Foto de las Islas Malvinas sacadas por un turista", opt3: "Foto del pacifico Argentino" },
@@ -86,85 +86,69 @@ const Ruleta = () => {
     return (
         <div>
             <div className="arrow"></div>
-            <button className='spin-button' onClick={() => startRotation()}>SP</button>
+            <button className='spin-button' onClick={() => startRotation()}></button>
             <ul className={frase.name}>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[0].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[0].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[1].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[1].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[2].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[2].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[3].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[3].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[4].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[4].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[5].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[5].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[6].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[6].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
                 <li>
                     <div className="text"
-                        contentEditable="true"
-                        spellCheck="false"
-                        suppressContentEditableWarning={true}>
+                        spellCheck="false">
                         <div className="img-container">
-                            <img src={data[7].image} alt="" style={{ height: "100%", width: "100%" }} />
+                            <img src={data[7].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
                         </div>
                     </div>
                 </li>
