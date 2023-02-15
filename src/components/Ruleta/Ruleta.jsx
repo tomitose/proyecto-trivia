@@ -30,28 +30,28 @@ const Ruleta = () => {
 
         switch (id) {
             case 1:
-                result = 1200;
+                result = 3580;
                 break;
             case 2:
-                result = 1050;
+                result = 4000;
                 break;
             case 3:
-                result = 900;
+                result = 4440;
                 break;
             case 4:
-                result = 1800;
+                result = 3500;
                 break;
             case 5:
-                result = 2700;
+                result = 2850;
                 break;
             case 6:
-                result = 1550;
+                result = 3790;
                 break;
             case 7:
-                result = 2400;
+                result = 3220;
                 break;
             case 8:
-                result = 2300;
+                result = 3640;
                 break;
             default:
                 return console.log("error assignTimeById");
@@ -62,9 +62,8 @@ const Ruleta = () => {
     const startRotation = () => {
 
         let num = Math.floor(Math.random() * 8);
-
         setDataForModal(data[num]);
-
+        console.log(data[num].id)
         const duration = assignTimeById(data[num].id)
 
         setFrase({
@@ -84,7 +83,7 @@ const Ruleta = () => {
 
 
     return (
-        <div>
+        <div className="container">
             <div className="arrow"></div>
             <button className='spin-button' onClick={() => startRotation()}></button>
             <ul className={frase.name}>
