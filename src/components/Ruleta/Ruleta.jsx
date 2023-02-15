@@ -4,6 +4,8 @@ const Ruleta = () => {
 
     const [frase, setFrase] = useState({name : "circle"});
 
+    
+
     const startRotation = () => {
         setFrase({
             name:"circle start-rotate"
