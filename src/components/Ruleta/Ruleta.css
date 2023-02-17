@@ -1,4 +1,20 @@
-.container
+.hide{
+    display: none;
+}
+
+
+.main-container{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.container{
+    height:59vh;
+    width: 32%;
+    display: flex;
+}
 
 li:first-child .text {
     background-color: #643618e6;
@@ -65,12 +81,12 @@ li:nth-child(8) {
     border: 1px solid black;
     position: absolute;
     padding: 0;
-    margin: 1em auto;
     border-radius: 50%;
     list-style: none;
     overflow: hidden;
-    left: calc(50% - 220px);
-    top: 60px;
+
+    /* margin: 50vh auto 0;
+    transform: translateY(-50%); */
 }
 li {
     overflow: hidden;
@@ -103,20 +119,17 @@ li {
     border-top: 50px solid black;
     position: absolute;
     left: 50%;
-    top: -20px;
+    top: calc(50% - 240px);
     z-index: 1;
 }
 .spin-button{
     position: absolute;
-    left: 48.5%;
-    top: 18%;
     z-index: 1;
     width: 45px;
     height: 40px;
     background-color:black;
     border: 3px solid #af7650;
-    border-radius: 30px;
-    margin-top: 20px;
+    border-radius: 50%;
     cursor:pointer;
     outline:none;
     color:white;
@@ -152,3 +165,96 @@ li {
     width: 100%;
     display: flex;
 }
+
+
+.size-width{
+    width:90%;
+}
+.size-height{
+    height: 75%;
+}
+
+
+
+
+
+.dialog-one{
+    margin: 0 auto;
+    height: 80%;
+    width:100%;
+}
+
+.dialog-two{
+    margin: 0 auto;
+    height: 50%;
+    width: 75%;
+
+}
+
+
+
+@media (min-width: 240px) {
+    .main-container{
+        transform: scale(0.5);
+    }
+
+    #btn-1{
+        width: 90%;
+    }
+    #btn-2{
+        width: 90%;
+    }
+    #btn-3{
+        width: 90%;
+    }
+}
+
+@media (min-width: 280px) {
+    .main-container{
+        transform: scale(0.65);
+    }
+    
+    #btn-1{
+        width: 70%;
+    }
+    #btn-2{
+        width: 70%;
+    }
+    #btn-3{
+        width: 70%;
+    }
+}
+
+@media (min-width: 320px) {
+    .main-container{
+        transform: scale(0.78);
+    }
+}
+
+@media (min-width: 360px) {
+    .main-container{
+        transform: scale(0.9);
+    }
+    .MuiDialog-root{
+        width: 100% !important;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 420px) {
+    .main-container{
+        transform: scale(1);
+    }
+}
+/* 
+@media (min-width: 720px) {
+    #btn-1{
+        width: 75%;
+    }
+    #btn-2{
+        width: 75%;
+    }
+    #btn-3{
+        width: 75%;
+    }
+} */

@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import ModalRuleta from './Modal/ModalRuleta';
 import "./Ruleta.css"
+
+
 const Ruleta = () => {
 
     const [frase, setFrase] = useState({ name: "circle" }); //Buscar reset despues de cada blick en boton
     const [dataForModal, setDataForModal] = useState({ id: 0, tematica: "", image: "" });
     const [openModalState, setOpenModalState] = useState(false);
+    const [disabledButton, setDisabledButton] = useState(false);
+
 
     const closeModal = () => {
+        setDisabledButton(false)
         setOpenModalState(false)
         setFrase({
             name: "circle"
@@ -60,102 +65,144 @@ const Ruleta = () => {
     }
 
     const startRotation = () => {
+        setDisabledButton(true)
 
-        let num = Math.floor(Math.random() * 8);
+        let num = Math.floor(Math.random() * data.length);
+
         setDataForModal(data[num]);
-        console.log(data[num].id)
         const duration = assignTimeById(data[num].id)
 
         setFrase({
             name: "circle start-rotate"
         })
+
         setTimeout(() => {
             setFrase({
                 name: "circle start-rotate stop-rotate"
             })
-            setOpenModalState(true)
-        }, duration)
+            const arrow = document.getElementById('flecha').getBoundingClientRect() //arrow x top:207 y:232 //  
+
+            var lists = document.querySelectorAll('li')
+
+            console.log(Math.floor(arrow.x),Math.floor(arrow.y))
+
+            //Rangos de deteccion de la arrow con respecto a cada li
+
+            lists.forEach((li,index) => {
+            const elPos = li.getBoundingClientRect();
+            const rangeWidthStart = elPos.x
+            const rangeWidthFinish = elPos.x + elPos.width
+            const rangeHeightStart = elPos.y
+            const rangeHeightFinish = elPos.y + elPos.height
+            if(arrow.x > rangeWidthStart && arrow.x < rangeWidthFinish && arrow.y > rangeHeightStart && arrow.y < rangeHeightFinish && rangeHeightStart < 80 && rangeHeightStart > 50 ){
+                console.log("width",Math.floor(rangeWidthStart),Math.floor(rangeWidthFinish),"height",Math.floor(rangeHeightStart),Math.floor(rangeHeightFinish))
+                console.log(li)
+            }
+            })
+
+            // const getTouchElement = document.elementFromPoint(arrow.x,)
+            // console.log(getTouchElement)
+        }, Math.floor(Math.random() * 10000) + 1)
+
+        // setTimeout(() => {
+        //     setOpenModalState(true)
+        // }, 5000)
 
         num = 0;
 
     };
 
-
-
     return (
-        <div className="container">
-            <div className="arrow"></div>
-            <button className='spin-button' onClick={() => startRotation()}></button>
-            <ul className={frase.name}>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[0].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+        <div className="main-container">
+            <div className="container">
+                <div id="flecha" className="arrow"></div>
+                <button className='spin-button' onClick={() => startRotation()} disabled={disabledButton}></button>
+                <ul className={frase.name}>
+                    <li id="li-1">
+                        <div className="text"
+                            spellCheck="false"
+                           >
+                            <div className="img-container">
+                                <img src={data[0].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[1].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-2">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                            >
+                            <div className="img-container">
+                                <img src={data[1].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[2].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-3">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                           >
+                            <div className="img-container">
+                                <img src={data[2].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[3].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-4">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                            >
+                            <div className="img-container">
+                                <img src={data[3].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[4].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-5">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                            >
+                            <div className="img-container">
+                                <img src={data[4].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[5].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-6">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                           >
+                            <div className="img-container">
+                                <img src={data[5].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[6].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-7">
+                        <div className="text"
+                            spellCheck="false"
+                           
+                            >
+                            <div className="img-container" >
+                                <img src={data[6].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="text"
-                        spellCheck="false">
-                        <div className="img-container">
-                            <img src={data[7].image} alt="" style={{ height: "100%", width: "100%",borderRadius:"5px" }} />
+                    </li>
+                    <li id="li-8">
+                        <div className="text"
+                            spellCheck="false"
+                            
+                            >
+                            <div className="img-container">
+                                <img src={data[7].image} alt="" style={{ height: "100%", width: "100%", borderRadius: "5px" }} />
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
 
 
-            {openModalState === true && <ModalRuleta open={openModalState} data={dataForModal} close={closeModal}></ModalRuleta>}
+                {openModalState === true && <ModalRuleta open={openModalState} data={dataForModal} close={closeModal}></ModalRuleta>}
+            </div>
         </div>
     )
 }

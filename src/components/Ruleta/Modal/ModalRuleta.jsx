@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
-import { Modal, Box, Button, Container, Typography } from "@mui/material"
+import React, { useState} from 'react'
+import { Modal, Box, Button, Container, Dialog} from "@mui/material"
+import { createTheme } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 const ModalRuleta = ({ open, data, close }) => {
 
   const [openChildModal, setOpenChildModal] = useState(false)
 
   const [estadoRespuesta, setEstadoRespuesta] = useState(false)
 
+  //max 280px BoxModal:width: width:90% height:75%,Container:flex,align center
+
   const ChildModal = () => {
     return (
-      <Modal
+      <Dialog
         open={openChildModal}
         onClose={close}
+        PaperProps={{ className:"dialog-two"}}
       >
         <Box style={styleTwo}>
           {estadoRespuesta === true &&
@@ -30,22 +36,22 @@ const ModalRuleta = ({ open, data, close }) => {
             </p>
           </div>
         </Box>
-      </Modal>
+      </Dialog>
     )
   }
 
-  const style = { //Adaptar a responsive luego de finalizar todo el mecanismo//Crear un mecanismo para que cada boton salga en distinto orden segun el click del spin, ej: primer intento:btn1,btn,3,btn2 seg intento: btn3,btn1,btn2 etc
+  let style = { //Adaptar a responsive luego de finalizar todo el mecanismo//Crear un mecanismo para que cada boton salga en distinto orden segun el click del spin, ej: primer intento:btn1,btn,3,btn2 seg intento: btn3,btn1,btn2 etc
     background: "white",
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "50%",
-    height: "50%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    height:'50%',
+    width:'50%'
   };
 
   const styleTwo = { //Adaptar a responsive luego de finalizar todo el mecanismo//Crear un mecanismo para que cada boton salga en distinto orden segun el click del spin, ej: primer intento:btn1,btn,3,btn2 seg intento: btn3,btn1,btn2 etc
@@ -54,8 +60,8 @@ const ModalRuleta = ({ open, data, close }) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "30%",
-    height: "30%",
+    width: "100%",
+    height: "100%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -64,7 +70,7 @@ const ModalRuleta = ({ open, data, close }) => {
   };
 
   const checkAnswer = (opcion, e) => {
-    if (opcion == data.tematica) {
+    if (opcion === data.tematica) {
       document.getElementById(e.target.id).setAttribute("style", "background-color:green")
       setOpenChildModal(true)
       setEstadoRespuesta(true)
@@ -76,24 +82,27 @@ const ModalRuleta = ({ open, data, close }) => {
   }
 
   return (
-    <Modal
-      open={open}
-      onClose={close}
+
+    
+    <Dialog
+    open={open}
+    onClose={close}
+    PaperProps={{ className:"dialog-one"}}
     >
-      <Box style={style}>
-        <Box sx={{ height: "50%" }}>
-          <Container sx={{ height: "100%", display: "flex", justifyContent: "center" }}>
-            <img src={data?.image} alt="" style={{ height: "100%", width: "70%" }} />
+      <Box sx={{height:'100%',width:'100%'}}>
+        <Box sx={{ height: "40%",padding:'25px' }}>
+          <Container sx={{ height: "90%", display: "flex", justifyContent: "center" ,padding:"0 !important"}}>
+            <img src={data?.image} alt="" style={{height:'100%',width:'100%'}} />
           </Container>
         </Box>
-        <Box sx={{ height: "50%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center" }}>
+        <Box sx={{ height: "60%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center" }}>
           <Button id='btn-1' sx={{ width: "70%" }} variant="contained" onClick={(e) => checkAnswer(data?.opt1, e)}>{data?.opt1}</Button>
           <Button id='btn-2' sx={{ width: "70%" }} variant="contained" onClick={(e) => checkAnswer(data?.opt2, e)}>{data?.opt2}</Button>
           <Button id='btn-3' sx={{ width: "70%" }} variant="contained" onClick={(e) => checkAnswer(data?.opt3, e)}>{data?.opt3}</Button>
         </Box>
         <ChildModal></ChildModal>
       </Box>
-    </Modal>
+    </Dialog>
   )
 }
 
