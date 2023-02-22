@@ -4,8 +4,8 @@
 
 #testPoint{
     position: absolute;
-    left:587px;
-    top:312px;
+    left:514px;
+    top:194px;
 }
 
 .main-container{
@@ -124,7 +124,7 @@ li {
     border-top: 50px solid black;
     position: absolute;
     left: 50%;
-    top: calc(50% - 240px);
+    top: calc(50% - 32%);
     z-index: 1;
 }
 .spin-button{
@@ -139,6 +139,8 @@ li {
     outline:none;
     color:white;
     font-size:18px;
+    top: calc(50% - 65px);
+    left: calc(50% - -12px);
 }
 .start-rotate{
     animation: start-rotate 1s linear infinite;

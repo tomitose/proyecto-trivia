@@ -89,22 +89,23 @@ const Ruleta = () => {
 
             spinButton.classList.add("hide")
 
-            const location = document.elementFromPoint(512, 324) //coordenadas basadas en un size de window width 1010x853 de height            
-
-
+            const location = document.elementsFromPoint(514, 203) //coordenadas basadas en un size de window width 1010x853 de height            //-46°
             data.forEach((e, index) => {
-                if (e.id == location.id) {
-                    console.log(e.id)
+                    var obj, matrix, values, a, b, angle;
+                    obj = document.getElementById('circulo');
+                    matrix = getComputedStyle(obj).getPropertyValue('transform');
+                    values = matrix.split('(')[1].split(')')[0].split(',')
+                    a = values[0];
+                    b = values[1];
+                    angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+                    console.log(angle,location)
                     if (location.attributes.class.nodeValue == "text") {
                         const elementLiId = location.parentNode.className
 
-                        var obj, matrix;
-                        obj = document.getElementById('circulo');
-                        matrix = getComputedStyle(obj).getPropertyValue('transform');
-                        console.log(qrDecompone(matrix))
                     }
                     setDataForModal(data[index])
-                }
+                
+                
             })
 
             // left: calc(50% - 0px);
@@ -119,6 +120,7 @@ const Ruleta = () => {
         // }, durationSetTimeOut1 + 1000)
 
     };
+
 
     return (
         <div className="main-container">
