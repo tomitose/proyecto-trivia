@@ -2,6 +2,11 @@
     display: none;
 }
 
+#testPoint{
+    position: absolute;
+    left:587px;
+    top:312px;
+}
 
 .main-container{
     height:100%;
@@ -50,34 +55,34 @@ li:nth-child(8) .text {
 }
 
 
-li:first-child {
+.list-1{
     transform: rotate(-90deg) skewY(-45deg);
 }
-li:nth-child(2) {
+.list-2 {
     transform: rotate(-45deg) skewY(-45deg);
 }
-li:nth-child(3) {
+.list-3 {
     transform: rotate(0deg) skewY(-45deg);
 }
-li:nth-child(4) {
+.list-4 {
     transform: rotate(45deg) skewY(-45deg);
 }
-li:nth-child(5) {
+.list-5 {
     transform: rotate(90deg) skewY(-45deg);
 }
-li:nth-child(6) {
+.list-6 {
     transform: rotate(135deg) skewY(-45deg);
 }
-li:nth-child(7) {
+.list-7 {
     transform: rotate(180deg) skewY(-45deg);
 }
-li:nth-child(8) {
+.list-8 {
     transform: rotate(225deg) skewY(-45deg);
 }
 
 .circle {
-    width: 25em;
-    height: 25em;
+    width: 24em;
+    height: 24em;
     border: 1px solid black;
     position: absolute;
     padding: 0;
@@ -155,8 +160,8 @@ li {
 
 .img-container{
     position: absolute;
-    top:10px;
-    left:174px;
+    top: calc(50% - 200px);
+    left: calc(50% - 25px);
     width: 20%;
     height: 20%;
 }
