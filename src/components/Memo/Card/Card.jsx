@@ -10,6 +10,7 @@ const Card = ({ item, handleChoice }) => {
   return (
     <div className="card" onClick={handleClick}>
       <img className="img-card" src={item.img} alt="img" />
+      {/* <div className="back"></div> */}
     </div>
   );
 };

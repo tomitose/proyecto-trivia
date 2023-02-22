@@ -1,4 +1,4 @@
-.container{
+.container-memo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,6 +6,6 @@
     flex-wrap: wrap;
 }
 
-.container h1 {
+.container-memo h1 {
     color: #fff;
 }
