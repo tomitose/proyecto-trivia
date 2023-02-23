@@ -1,15 +1,35 @@
+.container-all{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
 
 .container-cards{
     width: 700px;
-    background-color: rgb(194, 105, 221);
+    background-color: #a988b3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 1em;
+    gap: 2em;
     padding: 10px;
     border-radius: 10px;
+    align-items: center;
 }
 
+
+.btn-nuevo{
+    background-color: white !important;
+    color: #270152 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: large !important;
+    margin-bottom: 30px !important;
+}
+
+.btn-nuevo:hover{
+    background-color: #a3aaf0 !important;
+}
 
 @media (max-width: 700px) {
     .container-cards {
