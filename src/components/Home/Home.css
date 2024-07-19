@@ -1,12 +1,12 @@
 .btn-home{
     width: 100% !important;
     background-color: white !important;
-    color: #270152 !important;
+    color: #0d4c81 !important;
     text-decoration: none !important;
     font-weight: 600 !important;
     height: 15% !important;
     font-size: x-large !important;
 }
 .btn-home:hover{
-    background-color: #a3aaf0 !important;
+    background-color: #ced2fd !important;
 }
