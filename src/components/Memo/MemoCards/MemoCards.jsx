@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Card from "../Card/Card";
+import VictoryModal from "../VictoryModal/VictoryModal";
 import "./MemoCards.css";
 
 const MemoCards = () => {
-
-  const navigate = useNavigate(); // Usa useNavigate para la navegación
+  const navigate = useNavigate();
 
   const initialItems = [
     { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
@@ -34,6 +34,7 @@ const MemoCards = () => {
   const [disabled, setDisabled] = useState(false);
   const [showingCards, setShowingCards] = useState(false);
   const [time, setTime] = useState(0);
+  const [showVictoryModal, setShowVictoryModal] = useState(false);
   const timerRef = useRef(null);
 
   // Shuffle cards and start new game
@@ -116,6 +117,7 @@ const MemoCards = () => {
   useEffect(() => {
     if (items.length && items.every((item) => item.matched)) {
       stopTimer();
+      setShowVictoryModal(true); // Show the victory modal when all cards are matched
     }
   }, [items]);
 
@@ -124,6 +126,12 @@ const MemoCards = () => {
     shuffleCards();
     return () => stopTimer(); // Cleanup on unmount
   }, []);
+
+  // Function to restart the game
+  const restartGame = () => {
+    setShowVictoryModal(false);
+    shuffleCards();
+  };
 
   // Function to navigate to home
   const goToHome = () => {
@@ -160,6 +168,7 @@ const MemoCards = () => {
       >
         Volver al inicio
       </Button>
+      {showVictoryModal && <VictoryModal onRestart={restartGame} />}
     </div>
   );
 };

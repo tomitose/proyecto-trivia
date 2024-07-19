@@ -50,6 +50,14 @@
     background-color: #ced2fd !important;
 }
 
+
+@media (max-width: 1366px) {
+    .container-cards {
+        width: 530px;
+    }
+}
+
+
 @media (max-width: 700px) {
     .container-cards {
         width: 340px;
