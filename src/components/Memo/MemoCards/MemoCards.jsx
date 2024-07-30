@@ -50,7 +50,7 @@ const MemoCards = () => {
     setTimeout(() => {
       setShowingCards(false);
       startTimer();
-    }, 1300); // Adjusted to 1.3 seconds
+    }, 2000); // Adjusted to 1.3 seconds
   };
 
   // Start timer

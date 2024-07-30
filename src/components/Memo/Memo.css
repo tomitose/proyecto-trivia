@@ -5,14 +5,26 @@
 }
 
 .container-memo {
-    background-image: url('../../../public/cycle.png'); /* Ajusta la ruta según la ubicación */
-    background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el contenedor */
-    background-position: center; /* Centra la imagen en el contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    padding: 12px; /* Agrega un padding si deseas espacio alrededor del contenido */
+    background-image: url('../../../public/cycle.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 12px; 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
   }
+
+  @media (max-width: 500px) {
+    .container-memo {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 501px) {
+    .container-memo {
+        height: auto; /* Opcional, asegura que el height no se aplique */
+    }
+}

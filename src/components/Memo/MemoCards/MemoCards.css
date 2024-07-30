@@ -18,11 +18,14 @@
 }
 
 .info{
-    margin-bottom: 30px;
-    color: white;
+    margin-bottom: 6px;
+    color: #0d4c81;
     align-self: end;
     font-size: larger;
-    font-weight: 500;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #f0f8ffa1;
 }
 
 .btn-volver{
@@ -43,7 +46,7 @@
     text-decoration: none !important;
     font-weight: 600 !important;
     font-size: large !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 6px !important;
 }
 
 .btn-nuevo:hover{
