@@ -1,0 +1,33 @@
+.container-dragdrop{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.draggable-elements{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px solid black;
+}
+
+.droppable-elements{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 2px solid black;
+
+}
+
+.contenedor-amarillo,.contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde{
+    height: 120px;
+}
+
+.objeto{
+    height: 50px;
+    padding: 4px;
+}
