@@ -42,7 +42,7 @@ const DragDrop = () => {
     { id: 19, src: '/img/dragImagenes/objetos/lata-sola.png', category: 'aluminio' },
     { id: 20, src: '/img/dragImagenes/objetos/botella3.png', category: 'plastico' },
     { id: 21, src: '/img/dragImagenes/objetos/papel2.png', category: 'papel' },
-    { id: 22, src: '/img/dragImagenes/objetos/botella2.png', category: 'raee' },
+    { id: 22, src: '/img/dragImagenes/objetos/botella2.png', category: 'plastico' },
     { id: 23, src: '/img/dragImagenes/objetos/bateria-2.png', category: 'raee' },
     { id: 24, src: '/img/dragImagenes/objetos/celular.png', category: 'raee' },
     { id: 25, src: '/img/dragImagenes/objetos/pc.png', category: 'raee' },
