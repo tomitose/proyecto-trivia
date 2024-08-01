@@ -15,19 +15,55 @@
 }
 
 .droppable-elements{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border: 2px solid black;
+    display: grid;
+    gap: 10px; /* Ajusta el espacio entre los contenedores */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las columnas */
+    justify-content: center; /* Centra los contenedores horizontalmente */
 
 }
 
-.contenedor-amarillo,.contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde{
+.contenedor-amarillo,.contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde, .contenedor-rojo{
     height: 120px;
 }
 
 .objeto{
     height: 50px;
     padding: 4px;
+    touch-action: none; /* Prevenir el scroll durante el arrastre */
 }
+
+.volume-control {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .volume-control svg {
+    font-size: 2rem;
+    color: #fff; /* Ajusta el color del ícono según sea necesario */
+  }
+
+
+
+ /* Estilos específicos para el tamaño móvil */
+@media (max-width: 600px) {
+    .droppable-elements {
+      grid-template-columns: repeat(3, 1fr); /* 3 contenedores en la fila para dispositivos móviles */
+      grid-template-rows: auto auto; /* 2 filas para los contenedores */
+      justify-items: center; /* Centra los elementos dentro de sus celdas */
+    }
+  
+    /* Opcional: Añadir reglas para centrar los contenedores en la fila inferior */
+    .droppable-elements > div:nth-child(n+4) {
+      grid-column: span 1; /* Cada elemento ocupa una sola columna */
+    }
+  }
+  
+  /* Estilos para pantallas más grandes */
+  @media (min-width: 601px) {
+    .droppable-elements {
+      grid-template-columns: repeat(5, 1fr); /* Ajusta el número de columnas para pantallas más grandes */
+    }
+  }

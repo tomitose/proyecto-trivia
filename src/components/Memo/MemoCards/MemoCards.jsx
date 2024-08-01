@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Card from "../Card/Card";
@@ -8,7 +8,7 @@ import "./MemoCards.css";
 const MemoCards = () => {
   const navigate = useNavigate();
 
-  const initialItems = [
+  const initialItems = useMemo(() => [
     { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
     { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
     { id: 2, img: "/img/memoImagenes/rojo.png", matched: false },
@@ -25,7 +25,7 @@ const MemoCards = () => {
     { id: 7, img: "/img/memoImagenes/chico.png", matched: false },
     { id: 8, img: "/img/memoImagenes/chica.png", matched: false },
     { id: 8, img: "/img/memoImagenes/chica.png", matched: false },
-  ];
+  ], []);
 
   const [items, setItems] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -33,27 +33,24 @@ const MemoCards = () => {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [showingCards, setShowingCards] = useState(false);
-  const [time, setTime] = useState(0);
   const [showVictoryModal, setShowVictoryModal] = useState(false);
+  const [time, setTime] = useState(0);
   const timerRef = useRef(null);
 
-  // Shuffle cards and start new game
-  const shuffleCards = () => {
+  const shuffleCards = useCallback(() => {
     const shuffledCards = [...initialItems].sort(() => Math.random() - 0.5);
     setItems(shuffledCards);
     setTurns(0);
     setTime(0);
     resetTurn();
 
-    // Show cards briefly
     setShowingCards(true);
     setTimeout(() => {
       setShowingCards(false);
       startTimer();
-    }, 2000); // Adjusted to 1.3 seconds
-  };
+    }, 2000); // Adjusted to 2 seconds
+  }, [initialItems]);
 
-  // Start timer
   const startTimer = () => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
@@ -63,28 +60,24 @@ const MemoCards = () => {
     }, 1000);
   };
 
-  // Stop timer
   const stopTimer = () => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
     }
   };
 
-  // Format time
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  // Handle choice
   const handleChoice = (item) => {
     if (!disabled) {
       choiceOne ? setChoiceTwo(item) : setChoiceOne(item);
     }
   };
 
-  // Compare two selected cards
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setDisabled(true);
@@ -105,7 +98,6 @@ const MemoCards = () => {
     }
   }, [choiceOne, choiceTwo]);
 
-  // Reset turn
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
@@ -113,29 +105,25 @@ const MemoCards = () => {
     setDisabled(false);
   };
 
-  // Check if all cards are matched
   useEffect(() => {
     if (items.length && items.every((item) => item.matched)) {
       stopTimer();
-      setShowVictoryModal(true); // Show the victory modal when all cards are matched
+      setShowVictoryModal(true);
     }
   }, [items]);
 
-  // Start a new game on component mount
   useEffect(() => {
     shuffleCards();
-    return () => stopTimer(); // Cleanup on unmount
-  }, []);
+    return () => stopTimer();
+  }, [shuffleCards]);
 
-  // Function to restart the game
   const restartGame = () => {
     setShowVictoryModal(false);
     shuffleCards();
   };
 
-  // Function to navigate to home
   const goToHome = () => {
-    navigate("/"); // Redirige a la ruta de inicio
+    navigate("/");
   };
 
   return (
