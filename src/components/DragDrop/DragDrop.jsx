@@ -32,15 +32,13 @@ const DragDrop = () => {
   };
 
   const handleTouchStart = (e, id) => {
-    const touchItem = items.find(item => item.id === id);
-    e.target.dataset.id = touchItem.id;
-    e.target.setPointerCapture(e.pointerId);
+    e.target.dataset.id = id;
   };
 
   const handleTouchMove = (e) => {
     e.preventDefault();
     const touchLocation = e.touches[0];
-    const draggableItem = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
+    const draggableItem = e.target;
     if (draggableItem) {
       draggableItem.style.position = 'absolute';
       draggableItem.style.left = `${touchLocation.pageX - draggableItem.width / 2}px`;
@@ -49,8 +47,12 @@ const DragDrop = () => {
   };
 
   const handleTouchEnd = (e) => {
-    const touchItem = items.find(item => item.id === parseInt(e.target.dataset.id));
+    const id = e.target.dataset.id;
+    const touchItem = items.find(item => item.id === parseInt(id));
     const dropTargets = document.querySelectorAll('.droppable-elements > div');
+
+    let droppedInTarget = false;
+
     dropTargets.forEach(target => {
       const rect = target.getBoundingClientRect();
       const touchX = e.changedTouches[0].clientX;
@@ -61,9 +63,17 @@ const DragDrop = () => {
         touchY >= rect.top &&
         touchY <= rect.bottom
       ) {
-        handleDrop(e, touchItem.category);
+        if (target.className.includes(touchItem.category)) {
+          droppedInTarget = true;
+        }
       }
     });
+
+    if (droppedInTarget) {
+      setItems(items.filter(item => item.id !== parseInt(id)));
+    } else {
+      e.target.style.position = 'static'; // Reset position if dropped outside
+    }
   };
 
   const handleDrop = (e, dropCategory) => {
@@ -107,35 +117,35 @@ const DragDrop = () => {
         <h1> Arrastra y suelta en su contenedor</h1>
         <div className='droppable-elements'>
           <div
-            className='contenedor-amarillo'
+            className='contenedor-amarillo aluminio'
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'aluminio')}
           >
             <img className='contenedor-amarillo' src="/img/dragImagenes/container-aluminio.png" alt="" />
           </div>
           <div
-            className='contenedor-gris'
+            className='contenedor-gris organico'
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'organico')}
           >
             <img className='contenedor-gris' src="/img/dragImagenes/container-organico.png" alt="" />
           </div>
           <div
-            className='contenedor-azul'
+            className='contenedor-azul papel'
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'papel')}
           >
             <img className='contenedor-azul' src="/img/dragImagenes/container-papel.png" alt="" />
           </div>
           <div
-            className='contenedor-naranja'
+            className='contenedor-naranja plastico'
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'plastico')}
           >
             <img className='contenedor-naranja' src="/img/dragImagenes/container-plastico.png" alt="" />
           </div>
           <div
-            className='contenedor-verde'
+            className='contenedor-verde vidrio'
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, 'vidrio')}
           >
