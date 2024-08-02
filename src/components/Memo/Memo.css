@@ -17,6 +17,11 @@
     flex-wrap: wrap;
   }
 
+  .volume-control svg {
+    font-size: 2rem;
+    color: #fff; /* Ajusta el color del ícono según sea necesario */
+  }  
+
   @media (max-width: 500px) {
     .container-memo {
         height: 100vh;

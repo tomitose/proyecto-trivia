@@ -1,69 +1,131 @@
-.container-dragdrop{
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Estilos generales */
+html, body {
+  overscroll-behavior-y: contain; /* Lógica para que no haga refresh en móvil cuando hago scroll para abajo */
 }
 
-.draggable-elements{
-    height: 300px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    border: 2px solid black;
+.container-dragdrop {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overscroll-behavior: none;
+  height: 100vh;
+  justify-content: center;
 }
 
-.droppable-elements{
-    display: grid;
-    gap: 10px; /* Ajusta el espacio entre los contenedores */
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las columnas */
-    justify-content: center; /* Centra los contenedores horizontalmente */
-
+.draggable-elements {
+  height: 260px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  padding: 10px;
+  margin-top: 20px;
 }
 
-.contenedor-amarillo,.contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde, .contenedor-rojo{
-    height: 120px;
+.droppable-elements {
+  display: grid;
+  gap: 10px; /* Ajusta el espacio entre los contenedores */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las columnas */
+  justify-content: center; /* Centra los contenedores horizontalmente */
 }
 
-.objeto{
-    height: 50px;
-    padding: 4px;
-    touch-action: none; /* Prevenir el scroll durante el arrastre */
+.contenedor-amarillo, .contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde, .contenedor-rojo {
+  height: 120px;
+}
+
+.objeto {
+  height: 50px;
+  padding: 4px;
+  touch-action: none; /* Prevenir el scroll durante el arrastre */
+  animation: vibrateRotate 2s infinite; /* Duración extendida para una animación más lenta */
+}
+
+/* Animación combinada de vibración y rotación */
+@keyframes vibrateRotate {
+  0% {
+      transform: translateX(0) rotate(0deg);
+  }
+  20% {
+      transform: translateX(3px) rotate(3deg); /* Movimiento más sutil */
+  }
+  40% {
+      transform: translateX(0) rotate(0deg);
+  }
+  60% {
+      transform: translateX(-3px) rotate(-3deg); /* Movimiento más sutil */
+  }
+  80% {
+      transform: translateX(0) rotate(0deg);
+  }
+  100% {
+      transform: translateX(0) rotate(0deg);
+  }
 }
 
 .volume-control {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  
-  .volume-control svg {
-    font-size: 2rem;
-    color: #fff; /* Ajusta el color del ícono según sea necesario */
-  }
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
 
+.container-drop {
+  text-align: center;
+}
 
+.volume-control svg {
+  font-size: 2rem;
+  color: #fff; /* Ajusta el color del ícono según sea necesario */
+}
 
- /* Estilos específicos para el tamaño móvil */
+.title-contenedores {
+  color: #fff;
+  text-align: center;
+  font-size: large;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.btn-volver-drop {
+  margin-top: 40px !important;
+  margin-bottom: 40px !important;
+  background-color: white !important;
+  color: #0d4c81 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: large !important;
+}
+
+/* Estilos específicos para el tamaño móvil */
 @media (max-width: 600px) {
-    .droppable-elements {
+  .droppable-elements {
       grid-template-columns: repeat(3, 1fr); /* 3 contenedores en la fila para dispositivos móviles */
       grid-template-rows: auto auto; /* 2 filas para los contenedores */
       justify-items: center; /* Centra los elementos dentro de sus celdas */
-    }
-  
-    /* Opcional: Añadir reglas para centrar los contenedores en la fila inferior */
-    .droppable-elements > div:nth-child(n+4) {
+  }
+
+  /* Opcional: Añadir reglas para centrar los contenedores en la fila inferior */
+  .droppable-elements > div:nth-child(n+4) {
       grid-column: span 1; /* Cada elemento ocupa una sola columna */
-    }
   }
-  
-  /* Estilos para pantallas más grandes */
-  @media (min-width: 601px) {
-    .droppable-elements {
-      grid-template-columns: repeat(5, 1fr); /* Ajusta el número de columnas para pantallas más grandes */
-    }
+}
+
+/* Estilos para pantallas más grandes */
+@media (min-width: 601px) {
+  .droppable-elements {
+      grid-template-columns: repeat(6, 1fr); /* Ajusta el número de columnas para pantallas más grandes */
   }
+  .draggable-elements {
+      width: 600px;
+      height: 370px;
+  }
+  .contenedor-amarillo, .contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde, .contenedor-rojo {
+      height: 250px;
+  }
+  .objeto {
+      height: 70px;
+  }
+}

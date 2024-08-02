@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import VictoryModal from '../VictoryModal/VictoryModal';
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import './DragDrop.css';
 
 // Importar íconos
@@ -14,12 +16,19 @@ const shuffleArray = (array) => {
   return array;
 };
 
+// Función para seleccionar una muestra aleatoria de elementos
+const getRandomSample = (array, sampleSize) => {
+  return shuffleArray([...array]).slice(0, sampleSize);
+};
+
 // Función para barajar los contenedores
 const shuffleContainers = (containers) => {
   return shuffleArray(containers);
 };
 
 const DragDrop = () => {
+  const navigate = useNavigate();
+
   const initialItems = [
     { id: 1, src: '/img/dragImagenes/objetos/banana.png', category: 'organico' },
     { id: 2, src: '/img/dragImagenes/objetos/bolsa-plastico.png', category: 'plastico' },
@@ -56,20 +65,23 @@ const DragDrop = () => {
     { id: 4, className: 'contenedor-verde', category: 'vidrio', imageSrc: '/img/dragImagenes/container-vidrio.png' },
     { id: 5, className: 'contenedor-naranja', category: 'plastico', imageSrc: '/img/dragImagenes/container-plastico.png' },
     { id: 6, className: 'contenedor-rojo', category: 'raee', imageSrc: '/img/dragImagenes/container-raee.png' }
-
   ];
 
-  const [items, setItems] = useState(shuffleArray([...initialItems]));
+  const [items, setItems] = useState(getRandomSample(initialItems, 12));
   const [containers, setContainers] = useState(shuffleContainers([...initialContainers]));
   const [showVictoryModal, setShowVictoryModal] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(true);
   const audioRef = useRef(null);
+  const cheeringAudioRef = useRef(null);
 
   useEffect(() => {
     if (items.length === 0) {
       setShowVictoryModal(true);
       setAudioPlaying(false); // Detener el audio al finalizar
+      if (cheeringAudioRef.current) {
+        cheeringAudioRef.current.play().catch(err => console.log('Error al reproducir el audio de celebración:', err));
+      }
     }
   }, [items]);
 
@@ -134,41 +146,48 @@ const DragDrop = () => {
   };
 
   const handleDrop = (e, dropCategory) => {
-    const id = e.dataTransfer ? e.dataTransfer.getData('id') : e.target.dataset.id;
-    const newItems = items.filter(item => {
-      if (item.id === parseInt(id) && item.category === dropCategory) {
-        return false;
-      }
-      return true;
-    });
-    setItems(newItems);
+    e.preventDefault();
+    const id = e.dataTransfer.getData('id');
+    const dropItem = items.find(item => item.id === parseInt(id));
+    if (dropItem.category === dropCategory) {
+      setItems(prevItems => prevItems.filter(item => item.id !== parseInt(id)));
+    }
   };
 
   const handleDragOver = (e) => {
     e.preventDefault();
   };
 
-  const handleRestart = () => {
-    setItems(shuffleArray([...initialItems]));
-    setContainers(shuffleContainers([...initialContainers]));
-    setShowVictoryModal(false);
-    setAudioPlaying(true); // Reiniciar el audio
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
   };
 
-  const toggleMute = () => {
-    setIsMuted(prev => !prev);
-    if (!audioPlaying) {
-      setAudioPlaying(true); // Iniciar audio si no está reproduciéndose
+  const goToHome = () => {
+    navigate('/');
+  };
+
+  const handleRestart = () => {
+    setItems(getRandomSample(initialItems, 12));
+    setContainers(shuffleContainers([...initialContainers]));
+    setShowVictoryModal(false);
+    setAudioPlaying(true); // Reanudar el audio al reiniciar
+  };
+
+  const stopCheeringAudio = () => {
+    if (cheeringAudioRef.current) {
+      cheeringAudioRef.current.pause(); // Detener el audio
+      cheeringAudioRef.current.currentTime = 0; // Reiniciar la posición del audio
     }
   };
 
   return (
     <div className='container-dragdrop'>
-      {showVictoryModal && <VictoryModal onRestart={handleRestart} />}
+      {showVictoryModal && <VictoryModal onRestart={() => { stopCheeringAudio(); handleRestart(); }} />}
       <div className='volume-control' onClick={toggleMute}>
         {isMuted ? <VolumeOff /> : <VolumeUp />}
       </div>
       <audio ref={audioRef} src="/jingle.mpeg" loop></audio>
+      <audio ref={cheeringAudioRef} src="/cheering.wav" loop></audio>
       <div className='container-drag'>
         <div className='draggable-elements'>
           {items.map(item => (
@@ -189,7 +208,7 @@ const DragDrop = () => {
         </div>
       </div>
       <div className='container-drop'>
-      <h1 style={{ textAlign: 'center' }}>Arrastra y suelta en su contenedor</h1>
+        <h1 className='title-contenedores'>Arrastra la basura y colócala en su contenedor</h1>
         <div className='droppable-elements'>
           {containers.map(container => (
             <div
@@ -203,6 +222,13 @@ const DragDrop = () => {
             </div>
           ))}
         </div>
+        <Button
+          className="btn-volver-drop"
+          variant="contained"
+          onClick={goToHome}
+        >
+          Volver al inicio
+        </Button>
       </div>
     </div>
   );

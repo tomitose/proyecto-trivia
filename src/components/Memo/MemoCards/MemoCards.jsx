@@ -1,12 +1,26 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { VolumeUp, VolumeOff } from '@mui/icons-material'; // Import icons
 import Card from "../Card/Card";
 import VictoryModal from "../VictoryModal/VictoryModal";
 import "./MemoCards.css";
 
+// Function to format time (moved outside to avoid recreation)
+const formatTime = (time) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+};
+
 const MemoCards = () => {
   const navigate = useNavigate();
+
+  // Audio-related states and refs
+  const [isMuted, setIsMuted] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(true);
+  const audioRef = useRef(null);
+  const cheeringAudioRef = useRef(null);
 
   const initialItems = useMemo(() => [
     { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
@@ -66,12 +80,6 @@ const MemoCards = () => {
     }
   };
 
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-  };
-
   const handleChoice = (item) => {
     if (!disabled) {
       choiceOne ? setChoiceTwo(item) : setChoiceOne(item);
@@ -108,18 +116,54 @@ const MemoCards = () => {
   useEffect(() => {
     if (items.length && items.every((item) => item.matched)) {
       stopTimer();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      if (cheeringAudioRef.current) {
+        cheeringAudioRef.current.play().catch((err) => console.log("Error al reproducir el audio de victoria:", err));
+      }
       setShowVictoryModal(true);
     }
   }, [items]);
 
   useEffect(() => {
     shuffleCards();
-    return () => stopTimer();
+    return () => {
+      stopTimer();
+      if (cheeringAudioRef.current) {
+        cheeringAudioRef.current.pause();
+      }
+    };
   }, [shuffleCards]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.muted = isMuted;
+      if (audioPlaying) {
+        audioRef.current.play().catch((err) => console.log("Error al reproducir el audio:", err));
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isMuted, audioPlaying]);
 
   const restartGame = () => {
     setShowVictoryModal(false);
+    if (cheeringAudioRef.current) {
+      cheeringAudioRef.current.pause();
+      cheeringAudioRef.current.currentTime = 0;
+    }
     shuffleCards();
+    if (audioRef.current && !isMuted) {
+      audioRef.current.play().catch((err) => console.log("Error al reproducir el audio:", err));
+    }
+  };
+
+  const toggleMute = () => {
+    setIsMuted((prev) => !prev);
+    if (!audioPlaying) {
+      setAudioPlaying(true); // Start audio if not playing
+    }
   };
 
   const goToHome = () => {
@@ -128,6 +172,11 @@ const MemoCards = () => {
 
   return (
     <div className="container-all">
+      <div className="volume-control" onClick={toggleMute}>
+        {isMuted ? <VolumeOff /> : <VolumeUp />}
+      </div>
+      <audio ref={audioRef} src="/jingle.mpeg" loop></audio>
+      <audio ref={cheeringAudioRef} src="/cheering.wav" loop></audio>
       <Button className="btn-nuevo" variant="contained" onClick={shuffleCards}>
         Nueva partida
       </Button>
