@@ -1,16 +1,53 @@
-.btn-home{
+.btn-drag{
     width: 100% !important;
     background-color: white !important;
-    color: #0d4c81 !important;
+    color: #02B2EE !important;
     text-decoration: none !important;
     font-weight: 600 !important;
     height: 15% !important;
-    font-size: large !important;
+    padding: 60px !important;
+    font-size: xx-large !important;
+    text-transform: none !important;
+    border-radius: 16px 16px 16px 16px !important;
+    box-shadow: 1px 3px 8px 0px #02B2EE !important;
 }
+
+.btn-memory{
+    width: 100% !important;
+    background-color: white !important;
+    color: #0D4C81 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    height: 15% !important;
+    padding: 60px !important;
+    font-size: xx-large !important;
+    text-transform: none !important;
+    border-radius: 16px 16px 16px 16px !important;
+    box-shadow: 1px 3px 8px 0px #42a9ff !important;
+}
+
 .btn-home:hover{
     background-color: #ced2fd !important;
 }
 
+.imagen-parque{
+    width: auto !important;
+}
+
+.container-main-juegos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btns-juegos{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
 
 .container-main-home{
     background-color: #004B84;
@@ -18,3 +55,43 @@
     background-attachment: fixed;
     background-size: cover;
 }
+
+
+@media (max-width: 600px) {
+    .imagen-parque{
+        width: 380px !important;
+    }
+    .btn-drag{
+        width: 90% !important;
+        background-color: white !important;
+        color: #02B2EE !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        height: 15% !important;
+        padding: 40px !important;
+        font-size: large !important;
+        text-transform: none !important;
+        border-radius: 16px 16px 16px 16px !important;
+        box-shadow: 1px 3px 8px 0px #02B2EE !important;
+    }
+    
+    .btn-memory{
+        width: 90% !important;
+        background-color: white !important;
+        color: #0D4C81 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        height: 15% !important;
+        padding: 40px !important;
+        font-size: large !important;
+        text-transform: none !important;
+        border-radius: 16px 16px 16px 16px !important;
+        box-shadow: 1px 3px 8px 0px #42a9ff !important;
+    }
+  }
+
+@media (min-width: 601px) {
+    .imagen-parque{
+        width: 1100px !important;
+    }
+  }

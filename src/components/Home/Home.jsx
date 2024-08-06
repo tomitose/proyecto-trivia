@@ -9,9 +9,12 @@ const Home = () => {
 
   return (
     <div className='container-main-home' style={{height:'100%',width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
-      <div style={{height:'60%',width:'60%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-evenly'}}>
-        <Button className="btn-home" variant="contained" onClick={() => navigate('/dragdrop')}>Juego de imágenes</Button>
-        <Button className="btn-home" variant="contained" onClick={() => navigate('/memo')}>Juego de memoria</Button>
+      <div className='container-main-juegos'>
+          <img className='imagen-parque' src="/mapa-cormecor.png" alt="" srcset=""/>
+          <div className='btns-juegos'>
+            <Button className="btn-drag" variant="contained" onClick={() => navigate('/dragdrop')}>Juego de Imágenes <img style={{paddingLeft:'20px'}} src="/imagen-logo.svg" alt="" /></Button>
+            <Button className="btn-memory" variant="contained" onClick={() => navigate('/memo')}>Juego de Memoria <img style={{paddingLeft:'20px'}} src="/memory-logo.svg" alt="" /></Button>
+          </div>
       </div>
     </div>
   )
