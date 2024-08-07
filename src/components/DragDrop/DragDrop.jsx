@@ -149,10 +149,21 @@ const DragDrop = () => {
     e.preventDefault();
     const id = e.dataTransfer.getData('id');
     const dropItem = items.find(item => item.id === parseInt(id));
+    const target = e.target.closest('[data-category]'); // Obtener el contenedor objetivo
+  
     if (dropItem.category === dropCategory) {
       setItems(prevItems => prevItems.filter(item => item.id !== parseInt(id)));
+    } else {
+      // Añadir la clase shake
+      if (target) {
+        target.classList.add('shake');
+        setTimeout(() => {
+          target.classList.remove('shake');
+        }, 500); // Duración de la animación
+      }
     }
   };
+  
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -213,7 +224,7 @@ const DragDrop = () => {
           {containers.map(container => (
             <div
               key={container.id}
-              className={container.className}
+              className={`droppable ${container.className}`}
               data-category={container.category}
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, container.category)}

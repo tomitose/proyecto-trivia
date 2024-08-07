@@ -34,8 +34,8 @@
     background-color: white !important;
     color: #0d4c81 !important;
     text-decoration: none !important;
-    font-weight: 600 !important;
     font-size: large !important;
+    font-family: cursive !important;
 }
 
 
@@ -44,9 +44,9 @@
     background-color: white !important;
     color: #0d4c81 !important;
     text-decoration: none !important;
-    font-weight: 600 !important;
     font-size: large !important;
     margin-bottom: 6px !important;
+    font-family: cursive !important;
 }
 
 .btn-nuevo:hover{
