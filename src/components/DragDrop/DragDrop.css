@@ -158,7 +158,7 @@ html, body {
 @media (max-width: 1400px) {
   
   .draggable-elements {
-      height: 340px;
+      /* height: 340px; */
       margin-top: 30px;
   }
   
