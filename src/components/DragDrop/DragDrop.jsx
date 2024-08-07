@@ -116,34 +116,43 @@ const DragDrop = () => {
     }
   };
 
-  const handleTouchEnd = (e) => {
-    const id = e.target.dataset.id;
-    const touchItem = items.find(item => item.id === parseInt(id));
-    const dropTargets = document.querySelectorAll('.droppable-elements > div');
-    let placedInCorrectContainer = false;
+  const handleTouchEnd = (e) => { 
+    const id = e.target.dataset.id; 
+    const touchItem = items.find(item => item.id === parseInt(id)); 
+    const dropTargets = document.querySelectorAll('.droppable-elements > div'); 
+    let placedInCorrectContainer = false; 
 
-    dropTargets.forEach(target => {
-      const rect = target.getBoundingClientRect();
-      const touchX = e.changedTouches[0].clientX;
-      const touchY = e.changedTouches[0].clientY;
-      if (
-        touchX >= rect.left &&
-        touchX <= rect.right &&
-        touchY >= rect.top &&
-        touchY <= rect.bottom
-      ) {
-        const dropCategory = target.dataset.category;
-        if (dropCategory === touchItem.category) {
-          setItems(prevItems => prevItems.filter(item => item.id !== parseInt(id)));
-          placedInCorrectContainer = true;
-        }
-      }
-    });
+    dropTargets.forEach(target => { 
+      const rect = target.getBoundingClientRect(); 
+      const touchX = e.changedTouches[0].clientX; 
+      const touchY = e.changedTouches[0].clientY; 
+      if ( 
+        touchX >= rect.left && 
+        touchX <= rect.right && 
+        touchY >= rect.top && 
+        touchY <= rect.bottom 
+      ) { 
+        const dropCategory = target.dataset.category; 
+        if (touchItem && touchItem.category === dropCategory) { 
+          setItems(prevItems => prevItems.filter(item => item.id !== parseInt(id))); 
+          placedInCorrectContainer = true; 
+        } else { 
+          // Añadir la clase shake 
+          target.classList.add('shake'); 
+          setTimeout(() => { 
+            target.classList.remove('shake'); 
+          }, 500); // Duración de la animación
+        } 
+      } 
+    }); 
 
-    if (!placedInCorrectContainer) {
-      e.target.style.position = 'static';
-    }
-  };
+    if (!placedInCorrectContainer) { 
+      const draggableItem = document.querySelector(`[data-id="${id}"]`); 
+      if (draggableItem) { 
+        draggableItem.style.position = 'static'; 
+      } 
+    } 
+  }; 
 
   const handleDrop = (e, dropCategory) => {
     e.preventDefault();

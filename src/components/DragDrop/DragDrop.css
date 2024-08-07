@@ -30,7 +30,7 @@ html, body {
 
 .droppable-elements {
   display: grid;
-  gap: 16px; /* Ajusta el espacio entre los contenedores */
+  gap: 20px; /* Ajusta el espacio entre los contenedores */
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las columnas */
   justify-content: center; /* Centra los contenedores horizontalmente */
 }
@@ -46,27 +46,7 @@ html, body {
   animation: vibrateRotate 2s infinite; /* Duración extendida para una animación más lenta */
 }
 
-/* Animación combinada de vibración y rotación */
-@keyframes vibrateRotate {
-  0% {
-      transform: translateX(0) rotate(0deg);
-  }
-  20% {
-      transform: translateX(3px) rotate(3deg); /* Movimiento más sutil */
-  }
-  40% {
-      transform: translateX(0) rotate(0deg);
-  }
-  60% {
-      transform: translateX(-3px) rotate(-3deg); /* Movimiento más sutil */
-  }
-  80% {
-      transform: translateX(0) rotate(0deg);
-  }
-  100% {
-      transform: translateX(0) rotate(0deg);
-  }
-}
+
 
 .volume-control {
   position: absolute;
@@ -94,7 +74,7 @@ html, body {
 }
 
 .btn-volver-drop {
-  margin-top: 40px !important;
+  margin-top: 124px !important;
   margin-bottom: 40px !important;
   background-color: white !important;
   color: #0d4c81 !important;
@@ -113,6 +93,29 @@ html, body {
 
 .shake {
   animation: shake 0.5s;
+}
+
+
+/* Animación combinada de vibración y rotación */
+@keyframes vibrateRotate {
+  0% {
+      transform: translateX(0) rotate(0deg);
+  }
+  20% {
+      transform: translateX(3px) rotate(3deg); /* Movimiento más sutil */
+  }
+  40% {
+      transform: translateX(0) rotate(0deg);
+  }
+  60% {
+      transform: translateX(-3px) rotate(-3deg); /* Movimiento más sutil */
+  }
+  80% {
+      transform: translateX(0) rotate(0deg);
+  }
+  100% {
+      transform: translateX(0) rotate(0deg);
+  }
 }
 
 
@@ -138,7 +141,9 @@ html, body {
   .draggable-elements {
       width: 568px;
       height: 230px;
-      margin-top: 100px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      gap: 8px;
   }
   .contenedor-amarillo, .contenedor-gris, .contenedor-azul, .contenedor-naranja, .contenedor-verde, .contenedor-rojo {
       height: 250px;
@@ -153,7 +158,7 @@ html, body {
 @media (max-width: 1400px) {
   
   .draggable-elements {
-      height: 370px;
+      height: 340px;
       margin-top: 30px;
   }
   
