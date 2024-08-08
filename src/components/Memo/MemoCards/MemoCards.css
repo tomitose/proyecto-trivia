@@ -19,20 +19,19 @@
 
 .info{
     margin-bottom: 6px;
-    color: #0d4c81;
+    color: #ff8548;
     align-self: end;
     font-size: larger;
-    font-weight: bold;
     border-radius: 6px;
     padding: 10px;
-    background-color: #f0f8ffa1;
+    background-color: #f0f8ffde;
 }
 
 .btn-volver{
     margin-top: 40px !important;
     margin-bottom: 40px !important;
-    background-color: white !important;
-    color: #0d4c81 !important;
+    background-color: #fe681d !important;
+    color: #ffff !important;
     text-decoration: none !important;
     font-size: large !important;
     font-family: cursive !important;
@@ -41,8 +40,8 @@
 
 
 .btn-nuevo{
-    background-color: white !important;
-    color: #0d4c81 !important;
+    background-color: #fe681d !important;
+    color: #ffff !important;
     text-decoration: none !important;
     font-size: large !important;
     margin-bottom: 6px !important;

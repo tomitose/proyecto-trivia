@@ -30,7 +30,7 @@ html, body {
 
 .droppable-elements {
   display: grid;
-  gap: 20px; /* Ajusta el espacio entre los contenedores */
+  gap: 20px !important; /* Ajusta el espacio entre los contenedores */
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta el tamaño mínimo de las columnas */
   justify-content: center; /* Centra los contenedores horizontalmente */
 }
@@ -71,13 +71,16 @@ html, body {
   font-size: large;
   margin-top: 10px;
   margin-bottom: 30px;
+  font-family: cursive;
+  font-size: x-large;
 }
 
 .btn-volver-drop {
   margin-top: 124px !important;
   margin-bottom: 40px !important;
   background-color: white !important;
-  color: #0d4c81 !important;
+  color: #ffff !important;
+  background-color: #fe681d !important;
   text-decoration: none !important;
   font-size: large !important;
   font-family: cursive !important;
