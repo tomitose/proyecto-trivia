@@ -71,7 +71,6 @@ html, body {
   font-size: large;
   margin-top: 10px;
   margin-bottom: 30px;
-  font-family: cursive;
   font-size: x-large;
 }
 
@@ -83,7 +82,6 @@ html, body {
   background-color: #fe681d !important;
   text-decoration: none !important;
   font-size: large !important;
-  font-family: cursive !important;
 }
 
 @keyframes shake {

@@ -17,7 +17,7 @@
 .btn-memory{
     width: 86% !important;
     background-color: white !important;
-    color: #0D4C81 !important;
+    color: #F7C238 !important;
     text-decoration: none !important;
     font-weight: 600 !important;
     height: 15% !important;
@@ -25,18 +25,39 @@
     font-size: xx-large !important;
     text-transform: none !important;
     border-radius: 16px 16px 16px 16px !important;
+    box-shadow: 1px 2px 8px 0px #F7C238 !important;
+    font-family: inherit !important;
+    margin-bottom: 30px !important;
+
+}
+
+
+.btn-cormecor{
+    width: 86% !important;
+    background-color: white !important;
+    color: #0D4C81 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    height: 15% !important;
+    padding: 20px !important;
+    font-size: xx-large !important;
+    text-transform: none !important;
+    border-radius: 16px 16px 16px 16px !important;
     box-shadow: 1px 2px 8px 0px #42a9ff !important;
     font-family: inherit !important;
 }
 
+
 .btn-drag,
-.btn-memory {
+.btn-memory,
+.btn-cormecor {
     transition: transform 0.8s ease-in-out; /* Añadir transición para un efecto suave */
 }
 
 /* Efecto hover */
 .btn-drag:hover,
-.btn-memory:hover {
+.btn-memory:hover,
+.btn-cormecor:hover {
     transform: scale(1.02); /* Aumenta el tamaño en un 5% al hacer hover */
 }
 
@@ -97,11 +118,25 @@
     .btn-memory{
         width: 86% !important;
         background-color: white !important;
-        color: #0D4C81 !important;
+        color: #F7C238 !important;
         text-decoration: none !important;
         font-weight: 600 !important;
         height: 15% !important;
         padding: 30px !important;
+        font-size: large !important;
+        text-transform: none !important;
+        border-radius: 16px 16px 16px 16px !important;
+        box-shadow: 1px 2px 8px 0px #F7C238 !important;
+        font-family: inherit !important;
+
+    }
+    .btn-cormecor{
+        width: 86% !important;
+        background-color: white !important;
+        color: #0D4C81 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        height: 15% !important;
         font-size: large !important;
         text-transform: none !important;
         border-radius: 16px 16px 16px 16px !important;
@@ -138,4 +173,5 @@
         padding: 60px !important;
 
     }
+    
 }

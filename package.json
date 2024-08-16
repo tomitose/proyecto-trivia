@@ -1,6 +1,7 @@
 {
   "name": "proyecto-trivia",
   "version": "0.1.0",
+  "homepage": "https://cormecor.com.ar/cormecoritos/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

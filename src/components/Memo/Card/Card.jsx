@@ -14,7 +14,7 @@ const Card = ({ item, handleChoice, flipped, disabled }) => {
         <img className="img-front" src={item.img} alt="img" />
         <img
           className="img-back"
-          src="/img/memoImagenes/rectangle.png"
+          src="./img/memoImagenes/rectangle.png"
           alt="card-back"
           onClick={handleClick}
         />

@@ -5,8 +5,9 @@ import Home from "./components/Home/Home";
 import DragDrop from "./components/DragDrop/DragDrop";
 
 function App() {
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/cormecoritos">
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/memo" element={<Memo />}></Route>

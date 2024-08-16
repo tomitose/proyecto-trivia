@@ -23,22 +23,22 @@ const MemoCards = () => {
   const cheeringAudioRef = useRef(null);
 
   const initialItems = useMemo(() => [
-    { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
-    { id: 1, img: "/img/memoImagenes/amarillo.png", matched: false },
-    { id: 2, img: "/img/memoImagenes/rojo.png", matched: false },
-    { id: 2, img: "/img/memoImagenes/rojo.png", matched: false },
-    { id: 3, img: "/img/memoImagenes/azul.png", matched: false },
-    { id: 3, img: "/img/memoImagenes/azul.png", matched: false },
-    { id: 4, img: "/img/memoImagenes/marron.png", matched: false },
-    { id: 4, img: "/img/memoImagenes/marron.png", matched: false },
-    { id: 5, img: "/img/memoImagenes/naranja.png", matched: false },
-    { id: 5, img: "/img/memoImagenes/naranja.png", matched: false },
-    { id: 6, img: "/img/memoImagenes/verde.png", matched: false },
-    { id: 6, img: "/img/memoImagenes/verde.png", matched: false },
-    { id: 7, img: "/img/memoImagenes/chico.png", matched: false },
-    { id: 7, img: "/img/memoImagenes/chico.png", matched: false },
-    { id: 8, img: "/img/memoImagenes/chica.png", matched: false },
-    { id: 8, img: "/img/memoImagenes/chica.png", matched: false },
+    { id: 1, img: "./img/memoImagenes/amarillo.png", matched: false },
+    { id: 1, img: "./img/memoImagenes/amarillo.png", matched: false },
+    { id: 2, img: "./img/memoImagenes/rojo.png", matched: false },
+    { id: 2, img: "./img/memoImagenes/rojo.png", matched: false },
+    { id: 3, img: "./img/memoImagenes/azul.png", matched: false },
+    { id: 3, img: "./img/memoImagenes/azul.png", matched: false },
+    { id: 4, img: "./img/memoImagenes/marron.png", matched: false },
+    { id: 4, img: "./img/memoImagenes/marron.png", matched: false },
+    { id: 5, img: "./img/memoImagenes/naranja.png", matched: false },
+    { id: 5, img: "./img/memoImagenes/naranja.png", matched: false },
+    { id: 6, img: "./img/memoImagenes/verde.png", matched: false },
+    { id: 6, img: "./img/memoImagenes/verde.png", matched: false },
+    { id: 7, img: "./img/memoImagenes/chico.png", matched: false },
+    { id: 7, img: "./img/memoImagenes/chico.png", matched: false },
+    { id: 8, img: "./img/memoImagenes/chica.png", matched: false },
+    { id: 8, img: "./img/memoImagenes/chica.png", matched: false },
   ], []);
 
   const [items, setItems] = useState([]);
@@ -175,8 +175,8 @@ const MemoCards = () => {
       <div className="volume-control" onClick={toggleMute}>
         {isMuted ? <VolumeOff /> : <VolumeUp />}
       </div>
-      <audio ref={audioRef} src="/jingle.mpeg" loop></audio>
-      <audio ref={cheeringAudioRef} src="/cheering.wav" loop></audio>
+      <audio ref={audioRef} src="./jingle.mpeg" loop></audio>
+      <audio ref={cheeringAudioRef} src="./cheering.wav" loop></audio>
       <Button className="btn-nuevo" variant="contained" onClick={shuffleCards}>
         Nueva partida
       </Button>

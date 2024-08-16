@@ -30,41 +30,40 @@ const DragDrop = () => {
   const navigate = useNavigate();
 
   const initialItems = [
-    { id: 1, src: '/img/dragImagenes/objetos/banana.png', category: 'organico' },
-    { id: 2, src: '/img/dragImagenes/objetos/bolsa-plastico.png', category: 'plastico' },
-    { id: 3, src: '/img/dragImagenes/objetos/botella-vidrio.png', category: 'vidrio' },
-    { id: 4, src: '/img/dragImagenes/objetos/botella.png', category: 'plastico' },
-    { id: 5, src: '/img/dragImagenes/objetos/caja.png', category: 'papel' },
-    { id: 6, src: '/img/dragImagenes/objetos/cuchara.png', category: 'plastico' },
-    { id: 7, src: '/img/dragImagenes/objetos/diario.png', category: 'papel' },
-    { id: 8, src: '/img/dragImagenes/objetos/frasco.png', category: 'vidrio' },
-    { id: 9, src: '/img/dragImagenes/objetos/lata-coca.png', category: 'aluminio' },
-    { id: 10, src: '/img/dragImagenes/objetos/lata.png', category: 'aluminio' },
-    { id: 11, src: '/img/dragImagenes/objetos/leche.png', category: 'papel' },
-    { id: 12, src: '/img/dragImagenes/objetos/pescado.png', category: 'organico' },
-    { id: 13, src: '/img/dragImagenes/objetos/pollo.png', category: 'organico' },
-    { id: 14, src: '/img/dragImagenes/objetos/rociador.png', category: 'aluminio' },
-    { id: 15, src: '/img/dragImagenes/objetos/vidrio2.png', category: 'vidrio' },
-    { id: 16, src: '/img/dragImagenes/objetos/vidrio3.png', category: 'vidrio' },
-    { id: 17, src: '/img/dragImagenes/objetos/tijera.png', category: 'aluminio' },
-    { id: 18, src: '/img/dragImagenes/objetos/sandia.png', category: 'organico' },
-    { id: 19, src: '/img/dragImagenes/objetos/lata-sola.png', category: 'aluminio' },
-    { id: 20, src: '/img/dragImagenes/objetos/botella3.png', category: 'plastico' },
-    { id: 21, src: '/img/dragImagenes/objetos/papel2.png', category: 'papel' },
-    { id: 22, src: '/img/dragImagenes/objetos/botella2.png', category: 'plastico' },
-    { id: 23, src: '/img/dragImagenes/objetos/bateria-2.png', category: 'raee' },
-    { id: 24, src: '/img/dragImagenes/objetos/celular.png', category: 'raee' },
-    { id: 25, src: '/img/dragImagenes/objetos/pc.png', category: 'raee' },
-    { id: 26, src: '/img/dragImagenes/objetos/foco.png', category: 'raee' }
+    { id: 1, src: './img/dragImagenes/objetos/banana.png', category: 'organico' },
+    { id: 2, src: './img/dragImagenes/objetos/bolsa-plastico.png', category: 'plastico' },
+    { id: 3, src: './img/dragImagenes/objetos/botella-vidrio.png', category: 'vidrio' },
+    { id: 4, src: './img/dragImagenes/objetos/botella.png', category: 'plastico' },
+    { id: 5, src: './img/dragImagenes/objetos/caja.png', category: 'papel' },
+    { id: 6, src: './img/dragImagenes/objetos/cuchara.png', category: 'plastico' },
+    { id: 7, src: './img/dragImagenes/objetos/diario.png', category: 'papel' },
+    { id: 8, src: './img/dragImagenes/objetos/frasco.png', category: 'vidrio' },
+    { id: 9, src: './img/dragImagenes/objetos/lata-coca.png', category: 'aluminio' },
+    { id: 10, src: './img/dragImagenes/objetos/lata.png', category: 'aluminio' },
+    { id: 11, src: './img/dragImagenes/objetos/leche.png', category: 'papel' },
+    { id: 12, src: './img/dragImagenes/objetos/pescado.png', category: 'organico' },
+    { id: 13, src: './img/dragImagenes/objetos/pollo.png', category: 'organico' },
+    { id: 14, src: './img/dragImagenes/objetos/rociador.png', category: 'aluminio' },
+    { id: 15, src: './img/dragImagenes/objetos/vidrio2.png', category: 'vidrio' },
+    { id: 16, src: './img/dragImagenes/objetos/vidrio3.png', category: 'vidrio' },
+    { id: 17, src: './img/dragImagenes/objetos/tijera.png', category: 'aluminio' },
+    { id: 18, src: './img/dragImagenes/objetos/sandia.png', category: 'organico' },
+    { id: 19, src: './img/dragImagenes/objetos/lata-sola.png', category: 'aluminio' },
+    { id: 20, src: './img/dragImagenes/objetos/botella3.png', category: 'plastico' },
+    { id: 21, src: './img/dragImagenes/objetos/papel2.png', category: 'papel' },
+    { id: 22, src: './img/dragImagenes/objetos/botella2.png', category: 'plastico' },
+    { id: 24, src: './img/dragImagenes/objetos/celular.png', category: 'raee' },
+    { id: 25, src: './img/dragImagenes/objetos/pc.png', category: 'raee' },
+    { id: 26, src: './img/dragImagenes/objetos/foco.png', category: 'raee' }
   ];
 
   const initialContainers = [
-    { id: 1, className: 'contenedor-amarillo', category: 'aluminio', imageSrc: '/img/dragImagenes/container-aluminio.png' },
-    { id: 2, className: 'contenedor-gris', category: 'organico', imageSrc: '/img/dragImagenes/container-organico.png' },
-    { id: 3, className: 'contenedor-azul', category: 'papel', imageSrc: '/img/dragImagenes/container-papel.png' },
-    { id: 4, className: 'contenedor-verde', category: 'vidrio', imageSrc: '/img/dragImagenes/container-vidrio.png' },
-    { id: 5, className: 'contenedor-naranja', category: 'plastico', imageSrc: '/img/dragImagenes/container-plastico.png' },
-    { id: 6, className: 'contenedor-rojo', category: 'raee', imageSrc: '/img/dragImagenes/container-raee.png' }
+    { id: 1, className: 'contenedor-amarillo', category: 'aluminio', imageSrc: './img/dragImagenes/container-aluminio.png' },
+    { id: 2, className: 'contenedor-gris', category: 'organico', imageSrc: './img/dragImagenes/container-organico.png' },
+    { id: 3, className: 'contenedor-azul', category: 'papel', imageSrc: './img/dragImagenes/container-papel.png' },
+    { id: 4, className: 'contenedor-verde', category: 'vidrio', imageSrc: './img/dragImagenes/container-vidrio.png' },
+    { id: 5, className: 'contenedor-naranja', category: 'plastico', imageSrc: './img/dragImagenes/container-plastico.png' },
+    { id: 6, className: 'contenedor-rojo', category: 'raee', imageSrc: './img/dragImagenes/container-raee.png' }
   ];
 
   const [items, setItems] = useState(getRandomSample(initialItems, 12));
@@ -206,8 +205,8 @@ const DragDrop = () => {
       <div className='volume-control' onClick={toggleMute}>
         {isMuted ? <VolumeOff /> : <VolumeUp />}
       </div>
-      <audio ref={audioRef} src="/jingle.mpeg" loop></audio>
-      <audio ref={cheeringAudioRef} src="/cheering.wav" loop></audio>
+      <audio ref={audioRef} src="./jingle.mpeg" loop></audio>
+      <audio ref={cheeringAudioRef} src="./cheering.wav" loop></audio>
       <div className='container-drag'>
         <div className='draggable-elements'>
           {items.map(item => (
@@ -228,7 +227,7 @@ const DragDrop = () => {
         </div>
       </div>
       <div className='container-drop'>
-        <h1 className='title-contenedores'>Arrastra la basura y colócala en su contenedor</h1>
+        <h1 className='title-contenedores roboto-mono'>Arrastra la basura y colócala en su contenedor</h1>
         <div className='droppable-elements'>
           {containers.map(container => (
             <div
